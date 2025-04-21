@@ -240,6 +240,7 @@ def render(
                     rgb[None, ...].permute(0, 3, 1, 2),
                     image_infos["pixels"][None, ...].permute(0, 3, 1, 2)
                 )
+
                 logger.info(f"Frame {i}: PSNR {psnr:.4f}, SSIM {ssim_score:.4f}")
                 psnrs.append(psnr)
                 ssim_scores.append(ssim_score)

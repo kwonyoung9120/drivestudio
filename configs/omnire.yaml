@@ -5,7 +5,7 @@ dataset: waymo/3cams
 trainer:
   type: models.trainers.MultiTrainer
   optim:
-    num_iters: 30000
+    num_iters: 20000
     use_grad_scaler: false
     cache_buffer_freq: -1 # if > 0, use error based image sampler for training
   render:
@@ -78,10 +78,7 @@ model:
       near_randoms: 100_000
       far_randoms: 100_000
     reg:
-      sharp_shape_reg:
-        w: 1.
-        step_interval: 10
-        max_gauss_ratio: 10.       # threshold of ratio of gaussian max to min scale before applying regularization loss from the PhysGaussian paper
+      sharp_shape_reg: null      # threshold of ratio of gaussian max to min scale before applying regularization loss from the PhysGaussian paper
   RigidNodes:
     type: models.nodes.RigidNodes
     init:
@@ -254,7 +251,7 @@ model:
     type: models.modules.CameraOptModule
     optim:
       all:
-        lr: 1.0e-5
+        lr: 1.0e-6
         weight_decay: 1.0e-6
 
 # ------------- render ------------ #
